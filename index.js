@@ -1,6 +1,7 @@
 import "dotenv/config.js";
 import express from "express";
 import PatientRoute from "./routes/PatientRoute.js";
+import BookingRoute from "./routes/BookingRoute.js";
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -13,6 +14,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(PatientRoute);
+app.use(BookingRoute);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

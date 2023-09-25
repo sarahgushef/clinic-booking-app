@@ -3,6 +3,11 @@ import { DataTypes } from "sequelize";
 import db from "../config/Database.js";
 
 const Patient = db.define("patient", {
+  patient_id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
   name: {
     type: DataTypes.STRING,
   },
