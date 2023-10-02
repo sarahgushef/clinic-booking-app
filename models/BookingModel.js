@@ -21,8 +21,9 @@ const Booking = db.define("booking", {
 
 export default Booking;
 
-// If table "Booking" doesn't exist, this function creates it
+// If table "Booking" doesn't exist, this function creates it but we don't use it because
+// We already synchonize all model at once in index.js
 
-(async () => {
-  await db.sync();
-})();
+// (async () => {
+//   await db.sync();
+// })();

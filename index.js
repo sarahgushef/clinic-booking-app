@@ -19,10 +19,10 @@ app.get("/", (req, res) => {
 app.use(PatientRoute);
 app.use(BookingRoute);
 
-db.authenticate()
+// db sync() is for synchronize all models at once
+db.sync({ alter: true })
   .then(() => {
     console.log("Database connected");
-
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
     });

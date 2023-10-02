@@ -20,12 +20,16 @@ const Patient = db.define("patient", {
   password: {
     type: DataTypes.STRING,
   },
+  age: {
+    type: DataTypes.INTEGER,
+  },
 });
 
 export default Patient;
 
-// If table "Patient" doesn't exist, this function creates it
+// If table "Patient" doesn't exist, this function creates ,  this function creates it but we don't use it because
+// We already synchonize all model at once in index.js
 
-(async () => {
-  await db.sync();
-})();
+// (async () => {
+//   await db.sync();
+// })();
