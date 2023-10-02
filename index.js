@@ -1,6 +1,7 @@
 import "dotenv/config.js";
 import express from "express";
 import cors from "cors";
+import db from "./config/Database.js";
 import PatientRoute from "./routes/PatientRoute.js";
 import BookingRoute from "./routes/BookingRoute.js";
 
@@ -18,6 +19,14 @@ app.get("/", (req, res) => {
 app.use(PatientRoute);
 app.use(BookingRoute);
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+db.authenticate()
+  .then(() => {
+    console.log("Database connected");
+
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.log(`Unable to connect to database: ${error}`);
+  });
